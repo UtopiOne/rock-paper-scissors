@@ -23,14 +23,18 @@ const playRound = (playerSelection, computerSelection) => {
     }
 };
 
-let playerChoice = prompt("Choose an item!").toLowerCase();
-let computerChoice = computerSelection();
 
-console.log(playerChoice);
+const severalRounds = (amount) => {
+    for (let i = 0; i < amount; i++) {
+        let playerChoice = prompt("Choose an item!").toLowerCase();
+        let computerChoice = computerSelection();
 
-console.log(computerChoice);
+        console.log(playerChoice);
 
-console.log(playRound(playerChoice, computerChoice));
+        console.log(computerChoice);
 
+        console.log(playRound(playerChoice, computerChoice));
+    }
+};
 
-
+severalRounds(5);
