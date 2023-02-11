@@ -1,0 +1,35 @@
+body {
+    background-color: cadetblue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons {
+    display: flex;
+}
+
+.button {
+    flex: auto;
+    height: 100px;
+    margin-right: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: aquamarine;
+}
+
+.scores {
+    justify-content: center;
+    width: 15vmin;
+    background-color: blueviolet;
+}
+
+#result {
+    margin: 10px;
+}
+
+.score-text {
+    text-align: center;
+    font-weight: bolder;
+    padding: 10px;
+}

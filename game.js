@@ -43,6 +43,16 @@ function destroyButtons(buttons) {
     });
 }
 
+function createRestartButton() {
+    const buttonDiv = document.querySelector('.buttons');
+    const restartButton = document.createElement('button');
+    restartButton.classList.add('button');
+    restartButton.textContent = 'RESTART';
+    buttonDiv.appendChild(restartButton);
+
+    restartButton.onclick = () => window.location.reload();
+}
+
 let playerScore = 0;
 let computerScore = 0;
 
@@ -64,12 +74,11 @@ buttons.forEach((button) => {
         if (playerScore >= 5) {
             alert("You win");
             destroyButtons(buttons);
+            createRestartButton();
         } else if (computerScore >= 5) {
             alert("You lose");
             destroyButtons(buttons);
+            createRestartButton();
         }
     });
 });
-
-
-
