@@ -4,24 +4,39 @@ function computerSelection() {
     return items[Math.floor(Math.random() * items.length)];
 }
 
+
 const playRound = (playerSelection, computerSelection) => {
 
     if (playerSelection === computerSelection) {
         return 'You tied!';
     } if (playerSelection === 'rock' && computerSelection === 'scissors') {
+        playerScore++;
         return 'Rock breaks scissors! You win!';
     } if (playerSelection === 'scissors' && computerSelection === 'paper') {
+        playerScore++;
         return 'Scissors cut paper! You win';
     } if (playerSelection === 'paper' && computerSelection === 'rock') {
+        playerScore++;
         return 'Paper covers rock! You win!';
     } if (playerSelection === 'scissors' && computerSelection === 'rock') {
+        computerScore++;
         return 'Rock breaks scissors! You lose!';
     } if (playerSelection === 'paper' && computerSelection === 'scissors') {
+        computerScore++;
         return 'Scissors cut paper! You lose!';
     } if (playerSelection === 'rock' && computerSelection === 'paper') {
+        computerScore++;
         return 'Paper cover rock! You lose!';
     }
 };
+
+function checkScores(player, computer) {
+    player.textContent = `Your score: ${playerScore}`;
+    computer.textContent = `Computer score: ${computerScore}`;
+}
+
+let playerScore = 0;
+let computerScore = 0;
 
 const buttons = document.querySelectorAll('.button');
 buttons.forEach((button) => {
@@ -30,12 +45,22 @@ buttons.forEach((button) => {
         let playerChoice = button.id;
         let computerChoice = computerSelection();
 
-        const text = document.querySelector('#text');
-        const result = document.createElement('div');
+        const player = document.querySelector('#player');
+        const computer = document.querySelector('#computer');
+
+
+        const result = document.querySelector('#result');
         result.textContent = `${playRound(playerChoice, computerChoice)}`;
 
-        text.appendChild(result);
+        checkScores(player, computer);
+
+        if (playerScore >= 5) {
+            alert("You win");
+        } else if (computerScore >= 5) {
+            alert("You lose");
+        }
     });
 });
+
 
 
