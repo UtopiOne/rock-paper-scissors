@@ -1,4 +1,4 @@
-const items = Array('rock', 'paper', 'scissors');
+const items = ['rock', 'paper', 'scissors'];
 
 function computerSelection() {
     return items[Math.floor(Math.random() * items.length)];
@@ -23,19 +23,19 @@ const playRound = (playerSelection, computerSelection) => {
     }
 };
 
+const buttons = document.querySelectorAll('.button');
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
 
-const severalRounds = (amount) => {
-    for (let i = 0; i < amount; i++) {
-        let playerChoice = prompt("Choose an item!");
-        if (playerChoice === null) break;
-        playerChoice = playerChoice.toLowerCase();
-
+        let playerChoice = button.id;
         let computerChoice = computerSelection();
 
-        console.log(playerChoice);
-        console.log(computerChoice);
-        console.log(playRound(playerChoice, computerChoice));
-    }
-};
+        const text = document.querySelector('#text');
+        const result = document.createElement('div');
+        result.textContent = `${playRound(playerChoice, computerChoice)}`;
 
-severalRounds(5);
+        text.appendChild(result);
+    });
+});
+
+
