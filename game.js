@@ -30,15 +30,22 @@ const playRound = (playerSelection, computerSelection) => {
     }
 };
 
+const buttons = document.querySelectorAll('.button');
+
 function checkScores(player, computer) {
     player.textContent = `Your score: ${playerScore}`;
     computer.textContent = `Computer score: ${computerScore}`;
 }
 
+function destroyButtons(buttons) {
+    buttons.forEach((button) => {
+        button.remove();
+    });
+}
+
 let playerScore = 0;
 let computerScore = 0;
 
-const buttons = document.querySelectorAll('.button');
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
 
@@ -56,8 +63,10 @@ buttons.forEach((button) => {
 
         if (playerScore >= 5) {
             alert("You win");
+            destroyButtons(buttons);
         } else if (computerScore >= 5) {
             alert("You lose");
+            destroyButtons(buttons);
         }
     });
 });
